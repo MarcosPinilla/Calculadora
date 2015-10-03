@@ -1,7 +1,11 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Calculadora {
 
 	public static void menu(Scanner scn) {
+		 boolean ciclo = true;
+			do{
+			try{
 		int menu1 = 0;
 		int num1=0, num2=0;
 		do{
@@ -48,20 +52,46 @@ public class Calculadora {
 				break;
 			}
 		}while (menu1 != 0);
+		ciclo=false;
+			}catch(InputMismatchException exc){
+				
+				scn.nextLine();
+				System.out.println(" Solo se Aceptan Números");
+				
+				
+			}
+			}while(ciclo);
+		
 	};
 	
 	public static void suma(Scanner scn, int num1, int num2) {
-		System.out.println("-----------------------------");
-		System.out.println("Ingrese el Primer Sumando:");
-		num1 = scn.nextInt();
-		System.out.println("Ingrese el Segundo Sumando:");
-		num2 = scn.nextInt();
-		int suma = num1+num2;
-		System.out.println("El Total de la Suma es: " + suma);
-		System.out.println("-----------------------------");
+		boolean ciclo = true;
+		do{
+		try{
+			System.out.println("-----------------------------");
+			System.out.println("Ingrese el Primer Sumando:");
+			num1 = scn.nextInt();
+			System.out.println("Ingrese el Segundo Sumando:");
+			num2 = scn.nextInt();
+			int suma = num1+num2;
+			System.out.println("El Total de la Suma es: " + suma);
+			System.out.println("-----------------------------");
+			ciclo=false;
+		}catch(InputMismatchException exc){
+			
+			scn.nextLine();
+			System.out.println(" Solo se Aceptan Números");
+			
+			
+		}
+		}while(ciclo);
+		
 	};
 	
 	public static void resta(Scanner scn, int num1, int num2) {
+		boolean ciclo = true;
+		do{
+		try{
 		System.out.println("-----------------------------");
 		System.out.println("Ingrese el Minuendo:");
 		num1 = scn.nextInt();
@@ -70,9 +100,22 @@ public class Calculadora {
 		int resta = num1-num2;
 		System.out.println("El Resto es: " + resta);
 		System.out.println("-----------------------------");
+		ciclo=false;
+		}catch(InputMismatchException exc){
+			
+			scn.nextLine();
+			System.out.println(" Solo se Aceptan Números");
+			
+			
+		}
+		}while(ciclo);
 	};
 	
 	public static void mult(Scanner scn, int num1, int num2) {
+		boolean ciclo = true;
+		do{
+		try{
+	
 		System.out.println("-----------------------------");
 		System.out.println("Ingrese el Primer Factor: ");
 		num1 = scn.nextInt();
@@ -81,19 +124,46 @@ public class Calculadora {
 		int producto = num1*num2;
 		System.out.println("El Producto de los Factores es: " + producto);
 		System.out.println("-----------------------------");
+		ciclo=false;
+		}catch(InputMismatchException exc){
+			
+			scn.nextLine();
+			System.out.println(" Solo se Aceptan Números");
+			
+			
+		}
+		}while(ciclo);
 	};
 	
 	public static void div(Scanner scn, int num1, int num2) {
+	    boolean ciclo = true;
+		do{
+		try{
+	
 		System.out.println("-----------------------------");
 		System.out.println("Ingrese el Dividendo: ");
 		num1 = scn.nextInt();
 		System.out.println("Ingrese el Divisor: ");
 		num2 = scn.nextInt();
-		float cociente = (float) num1/num2;
+		float cociente = (num2!=0)?(float) num1/num2 : num1/num2;
 		System.out.println("El Cociente de la division es: " + cociente);
 		System.out.println("-----------------------------");
+		ciclo=false;
+		}catch(InputMismatchException exc){
+			scn.nextLine();
+			System.out.println(" Solo se Aceptan Números");
+			}
+		catch (ArithmeticException exc) {
+			scn.nextLine();
+			System.out.println("No se Acepta CERO como Divisor");
+		}
+		}while(ciclo);
 	};
 	 public static void mayor(Scanner scn,int num1, int num2){
+		 boolean ciclo = true;
+			do{
+			try{
+	 
 		System.out.println("-----------------------------");
         System.out.println("Ingrese un Número: ");
         num1=scn.nextInt();
@@ -108,8 +178,21 @@ public class Calculadora {
         }
         System.out.println("El Número Mayor es: "+max);
         System.out.println("-----------------------------");
+        ciclo=false;
+			}catch(InputMismatchException exc){
+				
+				scn.nextLine();
+				System.out.println(" Solo se Aceptan Números");
+				
+				
+			}
+			}while(ciclo);
      }
      public static void porc(Scanner scn,int num1, int num2){
+    	 boolean ciclo = true;
+ 		do{
+ 		try{
+     
     	 System.out.println("-----------------------------");
         System.out.println("Ingrese el Número: ");
         num1=scn.nextInt();
@@ -118,8 +201,21 @@ public class Calculadora {
         double porciento=(double)(num1*num2/100);
         System.out.println("El "+num2+"% de "+num1+ " es: "+porciento);
         System.out.println("-----------------------------");
+        ciclo=false;
+		}catch(InputMismatchException exc){
+			
+			scn.nextLine();
+			System.out.println(" Solo se Aceptan Números");
+			
+			
+		}
+		}while(ciclo);
      };
 	public static void salir(Scanner scn, int num1) {
+		boolean ciclo = true;
+		do{
+		try{
+	
 		System.out.println("¿De verdad quiere salir?(1.SI/2.NO)");
 		num1 = scn.nextInt();
 		while (num1>2 || num1<1){
@@ -133,6 +229,15 @@ public class Calculadora {
 			System.out.println("-----------------------------");
 			menu(scn);
 		}
+		ciclo=false;
+		}catch(InputMismatchException exc){
+			
+			scn.nextLine();
+			System.out.println(" Solo se Aceptan Números");
+			
+			
+		}
+		}while(ciclo);
 	};
 	
 	public static void main(String[] args) {
@@ -143,5 +248,4 @@ public class Calculadora {
 }
 
 	
-
 
