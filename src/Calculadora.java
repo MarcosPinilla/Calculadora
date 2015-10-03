@@ -10,6 +10,8 @@ public class Calculadora {
 			System.out.println("2.- Restar dos números");
 			System.out.println("3.- Multiplicar dos números");
 			System.out.println("4.- Dividir dos números");
+			System.out.println("5.- Mostrar el Mayor de dos numeros");
+			System.out.println("6.- Calcular Porcentaje");
 			System.out.println("0.- Salir del programa");
 			System.out.println("////////////////////////////");
 			menu1 = scn.nextInt();
@@ -29,6 +31,12 @@ public class Calculadora {
 			case 4:
 				div(scn, num1, num2);
 				break;
+			case 5:
+				mayor(scn, num1, num2);
+				break;
+			case 6:
+				porc(scn, num1, num2);
+				break;
 				
 			case 0:
 				salir(scn, num1);
@@ -39,7 +47,7 @@ public class Calculadora {
 				System.out.println("Opción inválida; ingrese de nuevo.");
 				break;
 			}
-		}while (menu1 != 5);
+		}while (menu1 != 0);
 	};
 	
 	public static void suma(Scanner scn, int num1, int num2) {
@@ -85,7 +93,32 @@ public class Calculadora {
 		System.out.println("El Cociente de la division es: " + cociente);
 		System.out.println("-----------------------------");
 	};
-	
+	 public static void mayor(Scanner scn,int num1, int num2){
+		System.out.println("-----------------------------");
+        System.out.println("Ingrese un Número: ");
+        num1=scn.nextInt();
+        System.out.println("Ingrese otro Número: ");
+        num2=scn.nextInt();
+        int max=0;
+        if(num1>num2){
+            max=num1;
+        }
+        if(num2>num1){
+            max=num2;
+        }
+        System.out.println("El Número Mayor es: "+max);
+        System.out.println("-----------------------------");
+     }
+     public static void porc(Scanner scn,int num1, int num2){
+    	 System.out.println("-----------------------------");
+        System.out.println("Ingrese el Número: ");
+        num1=scn.nextInt();
+        System.out.println("Ingrese Porcentaje a Calcular: ");
+        num2=scn.nextInt();
+        double porciento=(double)(num1*num2/100);
+        System.out.println("El "+num2+"% de "+num1+ " es: "+porciento);
+        System.out.println("-----------------------------");
+     };
 	public static void salir(Scanner scn, int num1) {
 		System.out.println("¿De verdad quiere salir?(1.SI/2.NO)");
 		num1 = scn.nextInt();
